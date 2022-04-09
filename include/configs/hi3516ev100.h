@@ -354,4 +354,6 @@
 
 #define CONFIG_CMD_UGZIP 1
 
+#include <configs/hi-common.h>
+
 #endif	/* __CONFIG_H */
