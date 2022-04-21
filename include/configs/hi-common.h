@@ -4,6 +4,7 @@
 #define CONFIG_EXTRA_ENV_SETTINGS \
     "uk=mw.b 0x82000000 ff 1000000; tftpboot 0x82000000 uImage.${soc} && sf probe 0; sf erase 0x50000 0x200000; sf write 0x82000000 0x50000 ${filesize}\0" \
     "ur=mw.b 0x82000000 ff 1000000; tftpboot 0x82000000 rootfs.squashfs.${soc} && sf probe 0; sf erase 0x250000 0x500000; sf write 0x82000000 0x250000 ${filesize}\0" \
+    "nandenv=setenv bootargs \"mem=${osmem} console=ttyAMA0,115200 panic=20 root=/dev/mtdblock3 rootfstype=squashfs init=/init mtdparts=hinand:256k(boot),256k(env),2048k(kernel),10240k(rootfs),-(rootfs_data)\"\0"
     "osmem=32M\0" \
     "soc="CONFIG_PRODUCTNAME
 
@@ -28,7 +29,7 @@
 #endif
 #endif
 
-#define CONFIG_SYS_HUSH_PARSER
+#define CONFIG_SYS_HUSH_PARSER 1
 #define CONFIG_SYS_PROMPT_HUSH_PS2 " > "
 
 #define CONFIG_CMD_GPIO 1
