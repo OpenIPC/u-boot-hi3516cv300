@@ -156,6 +156,8 @@ err_crc:
 	puts("*** Warning - bad CRC, using default environment\n\n");
 
 	set_default_env();
+	env_crc_update();
+	sf_saveenv();
 }
 
 int sf_env_init(void)
