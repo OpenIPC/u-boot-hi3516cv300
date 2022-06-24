@@ -65,7 +65,6 @@ SET_READ_QUAD_ADDR(2, INFINITE, 80);
 SET_READ_QUAD_ADDR(2, INFINITE, 104);
 SET_READ_QUAD_ADDR(1, INFINITE, 108);
 SET_READ_QUAD_ADDR(1, INFINITE, 120);
-
 /*****************************************************************************/
 SET_WRITE_STD(0, 256, 24);
 SET_WRITE_STD(0, 256, 75);
@@ -1178,13 +1177,17 @@ static void hifmc100_map_spi_op(struct hifmc_spi *spi)
 		SPI_IF_READ_FAST,	IF_TYPE_STD,
 		SPI_IF_READ_DUAL,	IF_TYPE_DUAL,
 		SPI_IF_READ_DUAL_ADDR,	IF_TYPE_DIO,
+#ifndef CONFIG_CLOSE_SPI_8PIN_4IO
 		SPI_IF_READ_QUAD,	IF_TYPE_QUAD,
 		SPI_IF_READ_QUAD_ADDR,	IF_TYPE_QIO,
+#endif
 		0,			0,
 	};
 	const int iftype_write[] = {
 		SPI_IF_WRITE_STD,	IF_TYPE_STD,
+#ifndef CONFIG_CLOSE_SPI_8PIN_4IO
 		SPI_IF_WRITE_QUAD,	IF_TYPE_QUAD,
+#endif
 		0,			0,
 	};
 	const char *if_str[] = {"STD", "DUAL", "DIO", "QUAD", "QIO"};

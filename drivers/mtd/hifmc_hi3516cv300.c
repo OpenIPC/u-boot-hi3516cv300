@@ -62,7 +62,7 @@ void hifmc_get_fmc_best_2x_clock(unsigned int *clock)
 	unsigned int sys_2X_clk[] = {
 		CLK_2X(24),	FMC_CLK_SEL(FMC_CLK_24M),
 		CLK_2X(83),	FMC_CLK_SEL(FMC_CLK_83P3M),
-		CLK_2X(148),	FMC_CLK_SEL(FMC_CLK_148P5M),
+		//CLK_2X(148),	FMC_CLK_SEL(FMC_CLK_148P5M),
 		0,		0,
 	};
 #undef CLK_2X
