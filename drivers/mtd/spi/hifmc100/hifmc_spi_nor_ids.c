@@ -2505,6 +2505,170 @@ static struct spi_nor_info hifmc_spi_nor_info_table[] = {
 		&spi_driver_general,
 	},
 
+    /* XMC */
+    {
+        "XM25QH64AHIG", {0x20, 0x70, 0x17}, 3, _8M,  _64K, 3,
+        {
+            &READ_STD(0, INFINITE, 80),
+            &READ_FAST(1, INFINITE, 104),
+            //&READ_DUAL(1, INFINITE, 104),
+            //&READ_DUAL_ADDR(1, INFINITE, 104),
+            //&READ_QUAD(1, INFINITE, 104),
+            //&READ_QUAD_ADDR(3, INFINITE, 104),
+            0
+        },
+        {
+            &WRITE_STD(0, 256, 104),
+            //&WRITE_QUAD(0, 256, 104),
+            0
+        },
+        {
+            &ERASE_SECTOR_64K(0, _64K, 104),
+            0
+        },
+        &spi_driver_no_qe,
+    },
+
+    /* XMC 3.3v */
+    {
+        "XM25QH128A", {0x20, 0x70, 0x18}, 3, _16M,  _64K, 3,
+        {
+            &READ_STD(0, INFINITE, 80),
+			&READ_FAST(1, INFINITE, 104),
+            //&READ_DUAL(1, INFINITE, 104),
+            //&READ_DUAL_ADDR(1, INFINITE, 104),
+            //&READ_QUAD(1, INFINITE, 104),
+            //&READ_QUAD_ADDR(3, INFINITE, 104),
+            0
+        },
+        {
+            &WRITE_STD(0, 256, 104),
+            //&WRITE_QUAD(0, 256, 104),
+            0
+        },
+        {
+            &ERASE_SECTOR_64K(0, _64K, 104),
+            0
+        },
+        &spi_driver_no_qe,
+    },
+
+        /* XMC */
+    {
+        "XM25QH64B", {0x20, 0x60, 0x17}, 3, _8M,  _64K, 3,
+        {
+            &READ_STD(0, INFINITE, 80),
+            &READ_FAST(1, INFINITE, 104),
+            //&READ_DUAL(1, INFINITE, 104),
+            //&READ_DUAL_ADDR(1, INFINITE, 104),
+            //&READ_QUAD(1, INFINITE, 104),
+            //&READ_QUAD_ADDR(3, INFINITE, 104),
+            0
+        },
+        {
+            &WRITE_STD(0, 256, 104),
+            //&WRITE_QUAD(0, 256, 104),
+            0
+        },
+        {
+            &ERASE_SECTOR_64K(0, _64K, 104),
+            0
+        },
+        &spi_driver_no_qe,
+    },
+
+    /* XMC 3.3v */
+    {
+        "XM25QH128B", {0x20, 0x60, 0x18}, 3, _16M,  _64K, 3,
+        {
+            &READ_STD(0, INFINITE, 50),
+            &READ_FAST(1, INFINITE, 104),
+            //&READ_DUAL(1, INFINITE, 104),
+            //&READ_DUAL_ADDR(1, INFINITE, 104),
+            //&READ_QUAD(1, INFINITE, 104),
+            //&READ_QUAD_ADDR(3, INFINITE, 104),
+            0
+        },
+        {
+            &WRITE_STD(0, 256, 104),
+            //&WRITE_QUAD(0, 256, 104),
+            0
+        },
+        {
+            &ERASE_SECTOR_64K(0, _64K, 104),
+            0
+        },
+        &spi_driver_no_qe,
+    },
+
+	/* XTX 3.3v */
+	{
+		"XT25F128BSSI/HGU", {0x0B, 0x40, 0x18}, 3, _16M,  _64K, 3,
+		{
+			&READ_STD(0, INFINITE, 80),
+			//&READ_DUAL(1, INFINITE, 108),
+			//&READ_DUAL_ADDR(1, INFINITE, 108),
+			//&READ_QUAD(1, INFINITE, 108),
+			//&READ_QUAD_ADDR(3, INFINITE, 72),
+			0
+		},
+		{
+			&WRITE_STD(0, 256, 80),
+			//&WRITE_QUAD(0, 256, 80),
+			0
+		},
+		{
+			&ERASE_SECTOR_64K(0, _64K, 80),
+			0
+		},
+		&spi_driver_no_qe,
+	},
+
+	{
+		"XT25F64BSSI/HGU-S", {0x0B, 0x40, 0x17}, 3, _8M,  _64K, 3,
+		{
+			&READ_STD(0, INFINITE, 80),
+			//&READ_DUAL(1, INFINITE, 108),
+			//&READ_DUAL_ADDR(1, INFINITE, 108),
+			//&READ_QUAD(1, INFINITE, 84),
+			//&READ_QUAD_ADDR(3, INFINITE, 72),
+			0
+		},
+		{
+			&WRITE_STD(0, 256, 80),
+			//&WRITE_QUAD(0, 256, 80),
+			0
+		},
+		{
+			&ERASE_SECTOR_64K(0, _64K, 80),
+			0
+		},
+		&spi_driver_no_qe,
+	},
+
+    {
+        "BY25Q64AS",  {0x68, 0x40, 0x17}, 3, _8M,   _64K, 3,
+        {
+            &READ_STD(0, INFINITE, 50),
+            //&READ_FAST(1, INFINITE, 80),
+            ////&READ_DUAL(1, INFINITE, 80),
+            ////&READ_QUAD(1, INFINITE, 80),
+            0
+        },
+
+        {
+            &WRITE_STD(0, 256, 80),
+            ////&WRITE_QUAD(0, 256, 80),
+            0
+        },
+
+        {
+            &ERASE_SECTOR_64K(0, _64K, 80),
+            0
+        },
+        &spi_driver_no_qe,
+    },
+
 	{0, {0}, 0, 0, 0, 0, {0}, {0}, {0}, NULL},
 };
 
