@@ -75,12 +75,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # `mem` overrides the QEMU machine's default RAM; cv300/ev100
-        # need more than the default for u-boot to decompress and run.
-        # Same value qemu-hisilicon's own boot tests use for these SoCs.
-        include:
-          - { board: hi3516cv300, mem: 256M }
-          - { board: hi3516ev100, mem: 256M }
+        # Use the cv300 machine's default 128 MiB RAM — that's the
+        # actual stock-board memory, and u-boot is expected to run on
+        # it without an inflated -m override.
+        board: [hi3516cv300, hi3516ev100]
     steps:
       - name: Install QEMU build deps
         run: |
@@ -132,7 +130,7 @@ jobs:
           # then kill. We don't drive any input — just observe boot.
           chmod +x ./qemu-arm
           ./qemu-arm \
-            -M ${{ matrix.board }} -m ${{ matrix.mem }} \
+            -M ${{ matrix.board }} \
             -global hisi-fmc.flash-file=/tmp/flash.bin \
             -nographic -serial pipe:/tmp/uart \
             -monitor none > /tmp/qemu.log 2>&1 &
