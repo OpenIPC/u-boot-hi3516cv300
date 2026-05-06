@@ -18,12 +18,12 @@
 PLATFORM_RELFLAGS += -fno-strict-aliasing -fno-common -ffixed-r8
 #		     -msoft-float
 
-# Hi3516CV300 / Hi3516EV100 are Cortex-A7 (ARMv7-A). The historical
-# armv5te downgrade was for old toolchains that didn't ship an armv7
-# multilib; the OpenIPC arm-hisiv500-linux toolchain does, so match the
-# silicon and let the linker find libgcc.
+# Hi3516CV300 / Hi3516EV100 are ARM926EJ-S (ARMv5TEJ). The earlier
+# config comment claimed "v7a" but the silicon is V3 / ARM9, confirmed
+# by the QEMU machine model in widgetii/qemu-hisilicon. Stay on
+# armv5te to match.
 PLATFORM_RELFLAGS += -fno-aggressive-loop-optimizations
-PLATFORM_CPPFLAGS += -march=armv7-a
+PLATFORM_CPPFLAGS += -march=armv5te
 PLATFORM_CPPFLAGS += -mno-unaligned-access
 # =========================================================================
 #
