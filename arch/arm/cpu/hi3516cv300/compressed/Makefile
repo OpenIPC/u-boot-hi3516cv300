@@ -15,7 +15,7 @@ OBJCOPY  := $(CROSS_COMPILE)objcopy
 
 ################################################################################
 BOOT     := mini-boot
-TEXTBASE := 0x88300000
+TEXTBASE := 0x80700000
 
 CFLAGS   := -g -O2 -fno-strict-aliasing -fno-common -ffixed-r8 \
 	-D__KERNEL__ -DTEXT_BASE=$(TEXTBASE) \

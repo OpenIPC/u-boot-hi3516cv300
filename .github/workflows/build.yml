@@ -77,8 +77,12 @@ jobs:
       matrix:
         # Use the cv300 machine's default 128 MiB RAM — that's the
         # actual stock-board memory, and u-boot is expected to run on
-        # it without an inflated -m override.
-        board: [hi3516cv300, hi3516ev100]
+        # it without an inflated -m override. Hi3516EV100 is a SKU
+        # variant of CV300 (same CPU/board), so its binary boots in
+        # widgetii/qemu-hisilicon's `hi3516cv300` machine.
+        include:
+          - { board: hi3516cv300, machine: hi3516cv300 }
+          - { board: hi3516ev100, machine: hi3516cv300 }
     steps:
       - name: Install QEMU build deps
         run: |
@@ -130,7 +134,7 @@ jobs:
           # then kill. We don't drive any input — just observe boot.
           chmod +x ./qemu-arm
           ./qemu-arm \
-            -M ${{ matrix.board }} \
+            -M ${{ matrix.machine }} \
             -global hisi-fmc.flash-file=/tmp/flash.bin \
             -nographic -serial pipe:/tmp/uart \
             -monitor none > /tmp/qemu.log 2>&1 &
