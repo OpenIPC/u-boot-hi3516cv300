@@ -15,7 +15,7 @@ OBJCOPY  := $(CROSS_COMPILE)objcopy
 
 ################################################################################
 BOOT     := mini-boot
-TEXTBASE := 0x88300000
+TEXTBASE := 0x80700000
 
 CFLAGS   := -g -O2 -fno-strict-aliasing -fno-common -ffixed-r8 \
 	-D__KERNEL__ -DTEXT_BASE=$(TEXTBASE) \
@@ -25,7 +25,7 @@ CFLAGS   := -g -O2 -fno-strict-aliasing -fno-common -ffixed-r8 \
 	-fno-aggressive-loop-optimizations \
 	-mno-unaligned-access \
 	-pipe  -DCONFIG_ARM -D__ARM__ -marm  -mabi=aapcs-linux \
-	-mno-thumb-interwork -march=armv7-a $(MKFLAGS)
+	-mno-thumb-interwork -march=armv5te $(MKFLAGS)
 
 ################################################################################
 

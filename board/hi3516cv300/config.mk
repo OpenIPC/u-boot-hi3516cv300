@@ -18,10 +18,6 @@
 #
 # image should be loaded at 0x01000000
 #
-ifdef CONFIG_SMALL_MEM
 TEXT_BASE = 0x80800000
-else
-TEXT_BASE = 0x88400000
-endif
 
-PLATFORM_CPPFLAGS += -march=armv7-a -mno-unaligned-access -DTEXT_BASE=$(TEXT_BASE)
+PLATFORM_CPPFLAGS += -march=armv5te -mno-unaligned-access -DTEXT_BASE=$(TEXT_BASE)
