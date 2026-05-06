@@ -18,9 +18,12 @@
 PLATFORM_RELFLAGS += -fno-strict-aliasing -fno-common -ffixed-r8
 #		     -msoft-float
 
-# Make ARMv5 to allow more compilers to work, even though its v7a.
+# Hi3516CV300 / Hi3516EV100 are Cortex-A7 (ARMv7-A). The historical
+# armv5te downgrade was for old toolchains that didn't ship an armv7
+# multilib; the OpenIPC arm-hisiv500-linux toolchain does, so match the
+# silicon and let the linker find libgcc.
 PLATFORM_RELFLAGS += -fno-aggressive-loop-optimizations
-PLATFORM_CPPFLAGS += -march=armv5te
+PLATFORM_CPPFLAGS += -march=armv7-a
 PLATFORM_CPPFLAGS += -mno-unaligned-access
 # =========================================================================
 #
