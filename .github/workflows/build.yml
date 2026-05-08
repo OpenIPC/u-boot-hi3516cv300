@@ -149,8 +149,7 @@ jobs:
           # then kill. We don't drive any input — just observe boot.
           chmod +x ./qemu-arm
           ./qemu-arm \
-            -M ${{ matrix.machine }} \
-            -global hisi-fmc.flash-file=/tmp/flash.bin \
+            -M ${{ matrix.machine }},flash-file=/tmp/flash.bin \
             -nographic -serial pipe:/tmp/uart \
             -monitor none > /tmp/qemu.log 2>&1 &
           QEMU_PID=$!
